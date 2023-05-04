@@ -10,7 +10,6 @@ function error404() {
         <div>
           <img src="/images/sad-puppy.jpg" alt="Sad Puppy" />
           <div>
-            {" "}
             Photo by
             <a href="https://unsplash.com/@bacila_vlad">Bacila Vlad</a>
             on <a href="https://unsplash.com/">Unsplash</a>
