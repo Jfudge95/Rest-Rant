@@ -26,3 +26,6 @@ function index(data) {
 }
 
 module.exports = index;
+
+// Add Delete Functionality
+// Add MongoDB
