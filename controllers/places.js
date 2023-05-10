@@ -1,9 +1,9 @@
 const router = require("express").Router();
-const places = require("../models/places");
+const Places = require("../models/places");
 
 // Get /places
 router.get("/", (req, res) => {
-  res.render("places/index", { places });
+  res.render("places/index", { places: Places });
 });
 
 router.get("/new", (req, res) => {
@@ -21,7 +21,7 @@ router.post("/", (req, res) => {
   if (!req.body.state) {
     req.body.state = "USA";
   }
-  places.push(req.body);
+  Places.push(req.body);
   res.redirect("/places");
 });
 
@@ -32,7 +32,7 @@ router.get("/:id", (req, res) => {
   } else if (!places[id]) {
     res.render("error404");
   } else {
-    res.render("places/show", { place: places[id], id });
+    res.render("places/show", { place: Places[id], id });
   }
 });
 
@@ -40,10 +40,10 @@ router.delete("/places/:id", (req, res) => {
   let id = Number(req.params.id);
   if (isNaN(id)) {
     res.render("error404");
-  } else if (!places[id]) {
+  } else if (!Places[id]) {
     res.render("error404");
   } else {
-    places.splice(id, 1);
+    Places.splice(id, 1);
     res.redirect("/places");
   }
 });
@@ -52,10 +52,10 @@ router.get("/:id/edit", (req, res) => {
   let id = Number(req.params.id);
   if (isNaN(id)) {
     res.render("error404");
-  } else if (!places[id]) {
+  } else if (!Places[id]) {
     res.render("error404");
   } else {
-    res.render("places/edit", { place: places[id] });
+    res.render("places/edit", { place: Places[id] });
   }
 });
 
@@ -79,7 +79,7 @@ router.put("/:id", (req, res) => {
     }
 
     // Save the new data into places[id]
-    places[id] = req.body;
+    Places[id] = req.body;
     res.redirect(`/places/${id}`);
   }
 });
