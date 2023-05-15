@@ -1,3 +1,4 @@
+require("dotenv").config(); // We need to do this to ensure we can use the value of the MONGO_URI environment variable.
 const mongoose = require("mongoose");
 
 mongoose
